@@ -1,7 +1,10 @@
 import os
+import sys
+import random
 import copy
 import time
 
+import math
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -21,10 +24,10 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
 from sklearn.svm import SVC as SVM
 
-from utils import fs_utils, tl_utils
-from utils.fs_utils import *
-from utils.tl_utils import *
-from sca import *
+from utils import feature_selection, transfer_learning
+from utils.feature_selection import *
+from utils.transfer_learning import *
+from AbSCA import *
 from local_search import *
 
 import warnings
@@ -118,35 +121,12 @@ train_loader = DataLoader(dataset=train_dataset,
 features, true_labels = eval_model_extract_features(features, true_labels, model, dataloader=train_loader, phase='training')
 # validation set features
 features, true_labels = eval_model_extract_features(features, true_labels, model, dataloader=data_loader['validation'], phase='validation')
-
-print(len(features), len(true_labels))
-
 # get features
 X, y = get_features(features, true_labels)
 
-# Applying Sine-Cosine Optimization Algorithm
-soln_SCA, conv_gph_SCA = SCA(num_agents=20, max_iter=40, train_data=X, train_label=y, save_conv_graph=False)
+# Applying Adaptive beta HC embedded Sine-Cosine Optimization Algorithm for FS
+soln_AbSCA = AbSCA(num_agents=20, max_iter=20, train_data=X, train_label=y)
 
-# validate SCA feature selection
-agent = soln_SCA.best_agent.copy()
+# validate AbSCA feature selection
+agent = soln_AbSCA.best_agent.copy()
 validate_FS(X, y, agent)
-
-cols = np.flatnonzero(agent)
-X1 = (X[:, cols]).copy()
-print(X1.shape, y.shape)
-
-# Applying Adaptive beta Hill Climbing for Local Search
-agent = np.ones(X1.shape[1])
-
-Xtrain, Xtest, ytrain, ytest = train_test_split(X1, y, test_size=0.2, shuffle=False)
-
-agentFit, agentAcc = compute_fitness(agent, Xtrain, Xtest, ytrain, ytest, weight_acc=0.99)
-
-print(f'Initial fitness = {agentFit} | Initial accuracy = {agentAcc} | Nos of features = {int(np.sum(agent))}\n\n')
-
-final_agent, final_fitness, final_acc, conv_gph_LSonSCA = adaptivebetaHC(agent, agentFit, agentAcc, Xtrain, Xtest, ytrain, ytest)
-
-print(f'\n\nBest fitness = {final_fitness} | Best accuracy = {final_acc} | Nos of features = {int(np.sum(final_agent))}')
-
-# validate local search
-validate_FS(X1, y, agent=final_agent)

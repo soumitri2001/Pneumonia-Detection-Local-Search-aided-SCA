@@ -16,8 +16,8 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
 from sklearn.svm import SVC as SVM
 
-from utils import fs_utils
-from utils.fs_utils import *
+from utils import feature_selection
+from utils.feature_selection import *
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -40,9 +40,6 @@ def getNeighbor(agent):
 
 def adaptivebetaHC(agent, agentFit, agentAcc, trainX, testX, trainy, testy):
 
-    fitness_gph = []
-    features_gph = []
-
     bmin = 0.001
     bmax = 0.01
     max_iter = 200
@@ -60,8 +57,7 @@ def adaptivebetaHC(agent, agentFit, agentAcc, trainX, testX, trainy, testy):
             if random.random() <= beta:
                 neighbor[i] = agent[i]
 
-        neighFit, neighAcc = compute_fitness(
-            neighbor, trainX, testX, trainy, testy, weight_acc=0.99)
+        neighFit, neighAcc = compute_fitness(neighbor, trainX, testX, trainy, testy, weight_acc=0.99)
 
         if neighFit > agentFit or neighAcc > agentAcc:
             agent = neighbor.copy()
@@ -69,12 +65,4 @@ def adaptivebetaHC(agent, agentFit, agentAcc, trainX, testX, trainy, testy):
             agentAcc = neighAcc
             print(f'iteration {itr+1} | Fitness = {neighFit} | Accuracy = {neighAcc} | Nos of features = [{int(np.sum(agent))}/{agent.shape[0]}]')
 
-        fitness_gph.append(agentFit)
-        features_gph.append(int(np.sum(agent)))
-
-    conv_gph = {
-        'fitness_gph': fitness_gph,
-        'features_gph': features_gph
-    }
-
-    return agent, agentFit, agentAcc, conv_gph
+    return agent
