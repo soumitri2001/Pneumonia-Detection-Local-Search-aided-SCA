@@ -43,7 +43,8 @@ parser.add_argument('--momentum', type=float, default = 0.9, help='Momentum')
 args = parser.parse_args()
 
 DIR_PATH = args.data_directory  # enter directory path for dataset
-
+if DIR_PATH[-1]=='/':
+    DIR_PATH = DIR_PATH[:-1]
 TRAIN_DIR_PATH = os.path.join(DIR_PATH, 'train')
 VAL_DIR_PATH = os.path.join(DIR_PATH, 'val')
 
