@@ -33,6 +33,7 @@ from local_search import *
 import warnings
 warnings.filterwarnings('ignore')
 
+import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--data_directory', type=str, default = './', help='Directory where the image data is stored')
 parser.add_argument('--epochs', type=int, default = 20, help='Number of Epochs of training')
