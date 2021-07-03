@@ -33,7 +33,15 @@ from local_search import *
 import warnings
 warnings.filterwarnings('ignore')
 
-DIR_PATH = None  # enter directory path for dataset
+parser = argparse.ArgumentParser()
+parser.add_argument('--data_directory', type=str, default = './', help='Directory where the image data is stored')
+parser.add_argument('--epochs', type=int, default = 20, help='Number of Epochs of training')
+parser.add_argument('--batch_size', type=int, default = 4, help='Batch size for training')
+parser.add_argument('--learning_rate', type=float, default = 0.001, help='Learning Rate')
+parser.add_argument('--momentum', type=float, default = 0.9, help='Momentum')
+args = parser.parse_args()
+
+DIR_PATH = args.data_directory  # enter directory path for dataset
 
 TRAIN_DIR_PATH = os.path.join(DIR_PATH, 'train')
 VAL_DIR_PATH = os.path.join(DIR_PATH, 'val')
@@ -65,11 +73,11 @@ val_dataset = torchvision.datasets.ImageFolder(VAL_DIR_PATH, transform=transform
 classes_to_idx = train_dataset.class_to_idx
 
 # hyperparameters
-train_batch_size = 4
-learning_rate = 0.001
+train_batch_size = args.batch_size
+learning_rate = args.learning_rate
 num_classes = len(classes_to_idx)
-num_epochs = 30
-momentum = 0.9
+num_epochs = args.epochs
+momentum = args.momentum
 
 phases = ['training', 'validation']
 
