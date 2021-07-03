@@ -23,10 +23,10 @@ Required directory structure:
 ```
 Then, run the code using the command prompt as follows:
 
-`python main.py --data_directory "data/"`
+`python main.py --data_directory "data"`
 
 Available arguments:
-- `--epochs`: Number of epochs of training. Default = 100
+- `--epochs`: Number of epochs of training. Default = 20
 - `--learning_rate`: Learning Rate. Default = 0.001
 - `--batch_size`: Batch Size. Default = 4
 - `--momentum`: Momentum. Default = 0.9
