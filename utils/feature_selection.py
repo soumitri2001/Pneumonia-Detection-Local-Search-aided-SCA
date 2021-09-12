@@ -1,3 +1,8 @@
+'''
+The code style has been adopted from the following repository:
+https://github.com/CMATER-JUCS/Py_FS
+'''
+
 import os
 import sys
 import random
