@@ -35,7 +35,7 @@ Available arguments:
 If this article helps in your research in any way, please cite us using:
 
 ```
-@article{chattopadhyay2021pnuemonia,
+@article{chattopadhyay2021pneumonia,
   title={Pneumonia Detection from Lung X-ray Images using Local Search Aided Sine Cosine Algorithm based Deep Feature Selection Method},
   author={Chattopadhyay, Soumitri and Kundu, Rohit and Singh, Pawan Kumar and Mirjalili, Seyedali and Sarkar, Ram},
   journal={International Journal of Intelligent Systems},
