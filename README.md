@@ -1,5 +1,5 @@
 # Pneumonia Detection using Local Search aided Sine-Cosine Algorithm
-Based on our paper "[Pneumonia Detection from Lung X-ray Images using Local Search Aided Sine Cosine Algorithm based Deep Feature Selection Method](https://onlinelibrary.wiley.com/doi/full/10.1002/int.22703)" published in _International Journal of Intelligent Systems_, Wiley.
+Based on our paper "[Pneumonia Detection from Lung X-ray Images using Local Search Aided Sine Cosine Algorithm based Deep Feature Selection Method](https://dx.doi.org/10.1002/int.22703)" published in _International Journal of Intelligent Systems_, Wiley.
 
 ## Requirements
 To install the required dependencies run the following in command prompt:
