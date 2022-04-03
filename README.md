@@ -1,6 +1,8 @@
 # Pneumonia Detection using Local Search aided Sine-Cosine Algorithm
 Based on our paper **"[Pneumonia Detection from Lung X-ray Images using Local Search Aided Sine Cosine Algorithm based Deep Feature Selection Method](https://dx.doi.org/10.1002/int.22703)"** published in **_International Journal of Intelligent Systems_, Wiley (2021).**
 
+_Note_: Access the preprint [here](https://raw.githubusercontent.com/Rohit-Kundu/Pneumonia-Detection-Local-Search-aided-SCA/main/preprint/pneumonia_absca.pdf). For the PDF of the published version of the manuscript, please email the first and/or second authors at: [soumitri.chattopadhyay@gmail.com](mailto:soumitri.chattopadhyay@gmail.com) and [rohitkunduju@gmail.com](mailto:rohitkunduju@gmail.com).
+
 ## Model Architecture
 <img src="./proposed_method.png" style="margin: 10px;">
 
