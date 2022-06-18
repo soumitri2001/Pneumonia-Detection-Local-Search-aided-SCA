@@ -40,13 +40,15 @@ Available arguments:
 If this article helps in your research in any way, please cite us using:
 
 ```
-@article{chattopadhyay2021pneumonia,
-  title={Pneumonia Detection from Lung X-ray Images using Local Search Aided Sine Cosine Algorithm based Deep Feature Selection Method},
+@article{chattopadhyay2022pneumonia,
+  title={Pneumonia detection from lung X-ray images using local search aided sine cosine algorithm based deep feature selection method},
   author={Chattopadhyay, Soumitri and Kundu, Rohit and Singh, Pawan Kumar and Mirjalili, Seyedali and Sarkar, Ram},
   journal={International Journal of Intelligent Systems},
-  publisher={Wiley},
-  pages={1--38},
-  year={2021},
-  DOI={10.1002/int.22703}
+  DOI={10.1002/int.22703},
+  volume={37},
+  number={7},
+  pages={3777--3814},
+  year={2022},
+  publisher={Wiley Online Library}
 }
 ```
